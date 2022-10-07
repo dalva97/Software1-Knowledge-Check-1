@@ -8,6 +8,10 @@ namespace KnowledgeCheck1_Calculator
 {
     class Program
     {
+        static void getErrorMessage()
+        {
+            Console.WriteLine("One or more of the numbers are not ints");
+        }
         static void Main(string[] args)
         {
 
@@ -15,6 +19,8 @@ namespace KnowledgeCheck1_Calculator
 
             var input = Console.ReadLine();
             var calculator = new Calculator();
+            string number1;
+            string number2;
 
             switch (input)
             {
@@ -30,28 +36,41 @@ namespace KnowledgeCheck1_Calculator
                     }
                     else
                     {
-                        Console.WriteLine("One or more of the numbers is not an int");
+                        getErrorMessage();
                     }
                     break;
 
                 case "2":
                     Console.WriteLine("Enter 2 integers to subtract");
-                    var subtractNumber1 = Console.ReadLine();
-                    var subtractNumber2 = Console.ReadLine();
+                     number1 = Console.ReadLine();
+                     number2 = Console.ReadLine();
 
-                    if (int.TryParse(subtractNumber1, out int subNumOne) && int.TryParse(subtractNumber2, out int subNumTwo))
+                    if (int.TryParse(number1, out int subNumOne) && int.TryParse(number2, out int subNumTwo))
                     {
-                        Console.Write($"{subtractNumber1} - {subtractNumber2} = ");
+                        Console.Write($"{number1} - {number2} = ");
                         Console.Write(calculator.Subtract(subNumOne, subNumTwo));
                     }
                     else
                     {
-                        Console.WriteLine("One or more of the numbers is not an int");
+                        getErrorMessage();
                     }
                     break;
 
                 case "3":
-                    // Add code here
+                    // Add code here for multiplication
+                    Console.WriteLine("Enter 2 integers to multiply");
+                     number1 = Console.ReadLine();
+                     number2 = Console.ReadLine();
+
+                    if (int.TryParse(number1, out int multNumOne) && int.TryParse(number2, out int multNumTwo))
+                    {
+                        Console.Write($"{number1} * {number2} = ");
+                        Console.Write(calculator.Multiply(multNumOne, multNumTwo));
+                    }
+                    else
+                    {
+                        getErrorMessage();
+                    }
                     break;
 
                 case "4":
@@ -66,7 +85,7 @@ namespace KnowledgeCheck1_Calculator
                     }
                     else
                     {
-                        Console.WriteLine("One or more of the numbers is not an int");
+                        getErrorMessage();
                     }
                     break;
                     break;
